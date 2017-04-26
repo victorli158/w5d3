@@ -32,4 +32,13 @@ function r_sum(arr) {
   return arr[0] + r_sum(arr.slice(1));
 }
 
-console.log(r_sum([1, 3, 5, 4]));
+// console.log(r_sum([1, 3, 5, 4]));
+
+function exp1(base, power) {
+  if (power === 0) {
+    return 1;
+  }
+  return base * exp1(base, power - 1);
+}
+
+// console.log(exp1(5, 3));
