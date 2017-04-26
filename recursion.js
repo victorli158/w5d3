@@ -42,3 +42,22 @@ function exp1(base, power) {
 }
 
 // console.log(exp1(5, 3));
+
+function exp2(base, power) {
+  if (power === 0) {
+    return 1;
+  }
+  if (power === 1) {
+    return base;
+  }
+  if (power % 2 === 0) {
+    let sqrt = exp2(base, (power / 2));
+    return sqrt * sqrt;
+  }
+  else {
+    let sqrt = exp2(base, (power - 1) / 2);
+    return base * sqrt * sqrt;
+  }
+}
+
+// console.log(exp2(2, 5));
