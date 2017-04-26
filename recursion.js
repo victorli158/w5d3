@@ -23,4 +23,13 @@ function i_sum(arr) {
   return sum;
 }
 
-console.log(i_sum([1,3,5,4]));
+// console.log(i_sum([1,3,5,4]));
+
+function r_sum(arr) {
+  if (arr.length === 0) {
+    return 0;
+  }
+  return arr[0] + r_sum(arr.slice(1));
+}
+
+console.log(r_sum([1, 3, 5, 4]));
