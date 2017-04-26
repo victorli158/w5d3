@@ -76,5 +76,23 @@ function i_fibo(n) {
 
   return fibs;
 }
-// 
+//
 // console.log(i_fibo(10));
+
+
+function r_fibo(n) {
+  const fibs = [1, 1];
+  if (n === 1) {
+    return [1];
+  }
+  if (n === 2) {
+    return fibs;
+  }
+
+  let lastFibo = r_fibo(n - 1);
+  lastFibo.push(lastFibo[lastFibo.length - 2] + lastFibo[lastFibo.length - 1]);
+
+  return lastFibo;
+}
+
+console.log(r_fibo(10));
