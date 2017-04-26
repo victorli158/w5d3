@@ -61,3 +61,20 @@ function exp2(base, power) {
 }
 
 // console.log(exp2(2, 5));
+
+function i_fibo(n) {
+  const fibs = [1, 1];
+  if (n === 1) {
+    return [1];
+  }
+  if (n === 2) {
+    return fibs;
+  }
+  while (fibs.length < n) {
+    fibs.push(fibs[fibs.length - 2] + fibs[fibs.length - 1]);
+  }
+
+  return fibs;
+}
+// 
+// console.log(i_fibo(10));
