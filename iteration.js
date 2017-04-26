@@ -29,3 +29,15 @@ function bubbleSort(arr) {
 
 // let unsorted = [5, 3, 6, 7, 2, 4];
 // console.log(bubbleSort(unsorted));
+
+function substrings(string) {
+  const result = [];
+  for (let i = 0; i < string.length; i++) {
+    for (let j = i + 1; j < string.length + 1; j++) {
+      result.push(string.slice(i, j));
+    }
+  }
+  return result;
+}
+
+// console.log(substrings("cat"));
