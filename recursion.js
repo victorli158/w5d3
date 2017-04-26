@@ -95,4 +95,31 @@ function r_fibo(n) {
   return lastFibo;
 }
 
-console.log(r_fibo(10));
+// console.log(r_fibo(10));
+
+function bsearch(arr, target) {
+  if (arr.length === 0) {
+    return null;
+  }
+  let pivot = Math.floor(arr.length / 2);
+  if (arr[pivot] === target) {
+    return pivot;
+  }
+  else if (arr[pivot] > target) {
+    let slice = arr.slice(0, pivot);
+    return bsearch(slice, target);
+  }
+  else {
+    let slice = arr.slice(pivot + 1);
+    let result = bsearch(slice, target);
+    return (result === null) ? null : pivot + 1 + result;
+  }
+}
+
+// console.log(bsearch([1, 2, 3], 1));
+// console.log(bsearch([2, 3, 4, 5], 3));
+// console.log(bsearch([2, 4, 6, 8, 10], 6));
+// console.log(bsearch([1, 3, 4, 5, 9], 5));
+// console.log(bsearch([1, 2, 3, 4, 5, 6], 6));
+// console.log(bsearch([1, 2, 3, 4, 5, 6], 0));
+// console.log(bsearch([1, 2, 3, 4, 5, 7, 6]));
