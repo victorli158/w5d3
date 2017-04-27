@@ -21,8 +21,7 @@ Student.prototype.courseLoad = function () {
   this.courses.forEach(function(course) {
     if (course.department in result){
       result[course.department] += course.credits;
-    }
-    else {
+    } else {
       result[course.department] = course.credits;
     }
   });
@@ -30,29 +29,44 @@ Student.prototype.courseLoad = function () {
   return result;
 };
 
-function Course(name, department, credits) {
+function Course(name, department, credits, block, days) {
   this.name = name;
   this.department = department;
   this.credits = credits;
   this.students = [];
+  this.block = block;
+  this.days = days;
 }
-
 
 Course.prototype.addStudent = function(student){
   student.enroll(this);
+};
+
+Course.prototype.conflictsWith = function(otherCourse) {
+  if (this.block !== otherCourse.block) {
+    return false;
+  }
+  if (this.days === this.days - otherCourse.days) {
+    return false;
+  }
+  return true;
 };
 
 let s1 = new Student("Tu", "Ngo");
 let s2 = new Student("Victor", "Li");
 let s3 = new Student("Jesus", "Christ");
 
-let c1 = new Course("Ruby", "pool", 20);
-let c2 = new Course("Rails", "hotel", 10);
-let c3 = new Course("JavaScript", "pool", 15);
+let c1 = new Course("Ruby", "pool", 20, 1, ['mon', 'wed', 'fri']);
+let c2 = new Course("Rails", "hotel", 10, 2, ['mon', 'wed', 'fri']);
+let c3 = new Course("JavaScript", "pool", 15, 1, ['mon', 'tue']);
+let c4 = new Course("Java", "hotel", 5, 1, ['tue', 'thur']);
 
 s1.enroll(c1);
 s1.enroll(c2);
 s1.enroll(c3);
 
 s2.enroll(c1);
-s2.enroll(c3);
+s2.enroll(c2);
+
+// console.log(c1.conflictsWith(c4));
+// console.log(c1.conflictsWith(c3));
